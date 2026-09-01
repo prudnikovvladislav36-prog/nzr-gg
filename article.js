@@ -36,6 +36,12 @@
   document.querySelector("#articleBody").innerHTML = article.body.map((p,i) =>
     i === 1 ? `<blockquote>${p}</blockquote>` : `<p>${p}</p>`).join("");
 
+  const source = document.querySelector("#articleSource");
+  if (source && article.sourceUrl) {
+    const label = article.sourceLabel || "Источник";
+    source.innerHTML = `<span>ИСТОЧНИК</span><a href="${article.sourceUrl}" target="_blank" rel="noopener noreferrer">${label} ↗</a>`;
+  }
+
   const related = data.getPublished()
     .filter(a => a.slug !== article.slug)
     .sort((a,b) => Number(b.category === article.category) - Number(a.category === article.category))

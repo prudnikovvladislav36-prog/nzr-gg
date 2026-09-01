@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#090909" />
   <title>NZR.GG — Play • Compete • Inspire</title>
   <meta name="description" content="NZR.GG — новости игр, киберспорт, обновления, индустрия и стримы." />
-  <link rel="stylesheet" href="styles.css?v=100" />
+  <link rel="stylesheet" href="styles.css?v=110" />
 </head>
 <body data-base="." data-boot="app.js">
   <div class="noise"></div>
@@ -55,7 +55,7 @@
       </article>
 
       <div class="hero-grid">
-        <a class="story-card accent-card" href="esports/">
+        <a class="story-card accent-card" href="esports/" data-story-category="esports">
           <div class="story-art story-art-esports"></div>
           <div class="story-shade"></div>
           <div class="story-copy">
@@ -64,7 +64,7 @@
           </div>
         </a>
 
-        <a class="story-card" href="updates/">
+        <a class="story-card" href="updates/" data-story-category="updates">
           <div class="story-art story-art-update"></div>
           <div class="story-shade"></div>
           <div class="story-copy">
@@ -73,7 +73,7 @@
           </div>
         </a>
 
-        <a class="story-card" href="industry/">
+        <a class="story-card" href="industry/" data-story-category="industry">
           <div class="story-art story-art-industry"></div>
           <div class="story-shade"></div>
           <div class="story-copy">
@@ -82,7 +82,7 @@
           </div>
         </a>
 
-        <a class="story-card" href="news/">
+        <a class="story-card" href="news/" data-story-category="news">
           <div class="story-art story-art-rpg"></div>
           <div class="story-shade"></div>
           <div class="story-copy">
@@ -103,22 +103,21 @@
         <div class="live-grid">
           <article class="stream-card">
             <div class="stream-preview">
-              <span class="live-badge">LIVE</span>
+              <span class="live-badge offline-badge">OFFLINE</span>
               <div class="stream-glow"></div><div class="stream-scan"></div>
             </div>
             <div class="stream-copy">
               <h3>NZR.GG STREAM</h3>
-              <p>Игры, общение и соревновательные эфиры.</p>
-              <div class="stream-meta">● 1 245 зрителей</div>
-              <a class="btn" href="#">Смотреть сейчас</a>
+              <p>Сейчас мы не в эфире. Здесь появится прямой эфир, когда стримы NZR.GG будут запущены.</p>
+              <div class="stream-meta">Расписание готовится</div>
             </div>
           </article>
 
           <div class="schedule">
-            <h3>БЛИЖАЙШИЕ СТРИМЫ</h3>
-            <div class="schedule-row"><b>02.09<br>19:00</b><span><strong>APEX LEGENDS</strong><small>Ранговые игры и общение</small></span><i>›</i></div>
-            <div class="schedule-row"><b>03.09<br>18:00</b><span><strong>CS2</strong><small>Тренировка перед турниром</small></span><i>›</i></div>
-            <div class="schedule-row"><b>04.09<br>20:00</b><span><strong>ESCAPE FROM TARKOV</strong><small>Вечерний рейд с подписчиками</small></span><i>›</i></div>
+            <h3>LIVE // STATUS</h3>
+            <div class="schedule-row"><b>—</b><span><strong>БЕЗ ДЕМО-ДАННЫХ</strong><small>Никаких вымышленных зрителей и эфиров: публикуем только реальные события.</small></span></div>
+            <div class="schedule-row"><b>01</b><span><strong>TWITCH</strong><small>Подключим официальный канал NZR.GG перед первым эфиром.</small></span></div>
+            <div class="schedule-row"><b>02</b><span><strong>РАСПИСАНИЕ</strong><small>Будет отображаться автоматически после запуска LIVE-направления.</small></span></div>
           </div>
         </div>
       </div>
@@ -130,33 +129,31 @@
         </div>
 
         <div class="tabs">
-          <button class="tab active">МАТЧИ</button>
-          <button class="tab">РЕЗУЛЬТАТЫ</button>
-          <button class="tab">ТУРНИРЫ</button>
+          <button class="tab active">СОБЫТИЯ</button>
         </div>
 
-        <h4>БЛИЖАЙШИЕ МАТЧИ</h4>
+        <h4>АКТУАЛЬНО В КИБЕРСПОРТЕ</h4>
 
-        <div class="match">
-          <time>02.09<br>17:00</time>
-          <span class="team">NAVI</span>
-          <b>VS</b>
-          <span class="team">G2</span>
+        <div class="match event-row">
+          <time>02.09<br>2026</time>
+          <span class="team">VALORANT CHAMPIONS</span>
+          <b>→</b>
+          <span class="team">ПРОДАЖА БИЛЕТОВ</span>
         </div>
-        <div class="match">
-          <time>02.09<br>20:30</time>
-          <span class="team">SPIRIT</span>
-          <b>VS</b>
-          <span class="team">FAZE</span>
+        <div class="match event-row">
+          <time>24.09<br>2026</time>
+          <span class="team">CHAMPIONS SHANGHAI</span>
+          <b>→</b>
+          <span class="team">GROUP STAGE</span>
         </div>
-        <div class="match">
-          <time>03.09<br>20:00</time>
-          <span class="team">VITALITY</span>
-          <b>VS</b>
-          <span class="team">ASTRALIS</span>
+        <div class="match event-row">
+          <time>31.08<br>2026</time>
+          <span class="team">NIP</span>
+          <b>→</b>
+          <span class="team">SNAPPI ВНЕ СОСТАВА</span>
         </div>
 
-        <a class="btn full" href="esports/">Все матчи и расписание <span>›</span></a>
+        <a class="btn full" href="esports/">Все материалы ESPORTS <span>›</span></a>
       </aside>
     </section>
 
@@ -214,10 +211,10 @@
       <span class="kicker">SEARCH</span>
       <h2>Поиск по NZR.GG</h2>
       <input type="search" placeholder="Игра, команда, турнир..." autofocus />
-      <p>Поиск будет подключён к контентной базе на следующем этапе.</p>
+      <p>Поиск по опубликованным материалам NZR.GG.</p>
     </div>
   </div>
 
-<script src="boot.js?v=100"></script>
+<script src="boot.js?v=110"></script>
 </body>
 </html>
