@@ -36,7 +36,7 @@ function renderStoryCards(){
     card.href=`article/?slug=${encodeURIComponent(article.slug)}`;
     const art=card.querySelector('.story-art');
     const title=card.querySelector('h3');
-    if(art){ art.style.backgroundImage=`url('${article.image}')`; art.style.backgroundSize='cover'; art.style.backgroundPosition='center'; }
+    if(art){ art.style.setProperty('background-image', `url('${article.image}')`, 'important'); art.style.setProperty('background-size','cover','important'); art.style.setProperty('background-position','center','important'); }
     if(title) title.textContent=article.title;
   });
 }
