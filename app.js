@@ -1,5 +1,3 @@
-document.querySelectorAll('[data-theme-toggle]').forEach(btn=>btn.addEventListener('click',()=>window.NZR_THEME?.toggle()));
-window.NZR_THEME?.sync();
 const menuBtn = document.getElementById('menuBtn');
 const mainNav = document.getElementById('mainNav');
 const searchBtn = document.getElementById('searchBtn');

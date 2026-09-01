@@ -789,3 +789,50 @@ body{overflow-x:hidden}
 @media(max-width:680px){
   .article-heading{padding-top:28px}.article-heading h1{font-size:38px;letter-spacing:-1.4px}.article-lead{font-size:16px}.article-cover-frame{aspect-ratio:4/3;margin-bottom:32px}.article-cover{object-position:center}.article-body{font-size:17px;line-height:1.72}.article-body blockquote{font-size:18px}.article-meta-row{align-items:flex-start;flex-direction:column;gap:10px}
 }
+
+/* ===== NZR.GG v1.5 — CLEAN COVERS + REAL THEME TOGGLE ===== */
+/* Story cards no longer duplicate category labels on top of the artwork. */
+.story-copy .kicker{display:none!important}
+.story-copy{bottom:18px}
+
+/* Clean 16:9 art is the single image source across cards and articles. */
+.story-art,.news-card .thumb,.media-card-image,.related-img{background-size:cover!important;background-position:center!important}
+.article-cover{object-position:center!important}
+
+/* Light theme: switch the whole surface system, not only the header. */
+:root[data-theme="light"] .status-strip,
+:root[data-theme="light"] .hero-main,
+:root[data-theme="light"] .stream-card,
+:root[data-theme="light"] .event-row,
+:root[data-theme="light"] .latest-list li,
+:root[data-theme="light"] .article-heading,
+:root[data-theme="light"] .article-layout,
+:root[data-theme="light"] .article-layout-v14,
+:root[data-theme="light"] .site-footer{color:#1b1b1b}
+:root[data-theme="light"] .hero-main{background:#f7f4ee}
+:root[data-theme="light"] .hero-overlay{background:linear-gradient(90deg,rgba(247,244,238,.04),rgba(247,244,238,.62) 52%,rgba(247,244,238,.96))}
+:root[data-theme="light"] .story-shade{background:linear-gradient(0deg,rgba(250,248,243,.94),rgba(250,248,243,.04) 72%)}
+:root[data-theme="light"] .story-copy h3{color:#171717;text-shadow:0 1px 0 rgba(255,255,255,.55)}
+:root[data-theme="light"] .hero-content h1{color:#171717}
+:root[data-theme="light"] .hero-content p{color:#514e49}
+:root[data-theme="light"] .eyebrow,:root[data-theme="light"] .hero-note,:root[data-theme="light"] .meta{color:#6a655e}
+:root[data-theme="light"] .status-strip{border-color:#d8c8aa;color:#77716a}
+:root[data-theme="light"] .status-strip b{color:#b27600}
+:root[data-theme="light"] .stream-card,:root[data-theme="light"] .event-row{border-color:#d4cec4;background:#faf8f3}
+:root[data-theme="light"] .latest-list li{border-color:#d4cec4}
+:root[data-theme="light"] .site-footer{border-color:#d4cec4}
+:root[data-theme="light"] .site-footer a{color:#4f4b45}
+:root[data-theme="light"] .brand-copy small,:root[data-theme="light"] .footer-brand small{color:#68635d}
+:root[data-theme="light"] .section-head h2,:root[data-theme="light"] .section-head a{color:#b27600}
+:root[data-theme="light"] .btn{color:#171717;background:rgba(242,160,0,.08)}
+:root[data-theme="light"] .btn:hover{background:var(--gold);color:#111}
+:root[data-theme="light"] .article-meta-row{border-color:#d3cec4}
+:root[data-theme="light"] .article-heading h1{color:#171717}
+:root[data-theme="light"] .article-breadcrumbs{color:#77716a}
+:root[data-theme="light"] .article-section{color:#b27600;border-color:#b27600}
+:root[data-theme="light"] .article-aside-v14 .aside-rule{background:#d6d0c5}
+:root[data-theme="light"] .tag-row span,:root[data-theme="light"] .article-tags span{background:#eee9df;color:#4c4944;border-color:#cfc7ba}
+
+/* Theme button has a visible selected state. */
+.theme-toggle{transition:background .18s ease,color .18s ease,border-color .18s ease}
+:root[data-theme="light"] .theme-toggle{background:#fff8e9!important;color:#a86d00!important;border-color:#c48a18!important}
