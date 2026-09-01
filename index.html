@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#090909" />
   <title>NZR.GG — Play • Compete • Inspire</title>
   <meta name="description" content="NZR.GG — новости игр, киберспорт, обновления, индустрия и стримы." />
-  <link rel="stylesheet" href="styles.css?v=05" />
+  <link rel="stylesheet" href="styles.css?v=06" />
 </head>
 <body>
   <div class="noise"></div>
@@ -22,10 +22,10 @@
     <button class="menu-btn" id="menuBtn" aria-label="Открыть меню">☰</button>
 
     <nav class="main-nav" id="mainNav">
-      <a class="active" href="#news">NEWS</a>
-      <a href="#esports">ESPORTS</a>
-      <a href="#updates">UPDATES</a>
-      <a href="#industry">INDUSTRY</a>
+      <a class="active" href="news/">NEWS</a>
+      <a href="esports/">ESPORTS</a>
+      <a href="updates/">UPDATES</a>
+      <a href="industry/">INDUSTRY</a>
       <a href="#live">LIVE</a>
       <a href="#tournaments">TOURNAMENTS <em>SOON</em></a>
     </nav>
@@ -51,12 +51,12 @@
           <span class="eyebrow">NZR // EDITORIAL</span><span class="kicker">NEWS</span>
           <h1>Главные события <em>игрового мира</em> — в одном месте</h1>
           <p>Новости, крупные релизы, обновления и авторский взгляд NZR.GG без информационного шума.</p>
-          <div class="hero-actions"><a class="btn primary" href="#news">Читать материалы <span>›</span></a><span class="hero-note">01 / 04 · EDITOR'S PICK</span></div>
+          <div class="hero-actions"><a class="btn primary" href="news/">Читать материалы <span>›</span></a><span class="hero-note">01 / 04 · EDITOR'S PICK</span></div>
         </div>
-      </article>
+      </a>
 
       <div class="hero-grid">
-        <article class="story-card accent-card">
+        <a class="story-card accent-card" href="esports/">
           <div class="story-art story-art-esports"></div>
           <div class="story-shade"></div>
           <div class="story-copy">
@@ -65,32 +65,32 @@
           </div>
         </article>
 
-        <article class="story-card">
+        <a class="story-card" href="updates/">
           <div class="story-art story-art-update"></div>
           <div class="story-shade"></div>
           <div class="story-copy">
             <span class="kicker">UPDATES</span>
             <h3>Крупные патчи и новый контент</h3>
           </div>
-        </article>
+        </a>
 
-        <article class="story-card">
+        <a class="story-card" href="industry/">
           <div class="story-art story-art-industry"></div>
           <div class="story-shade"></div>
           <div class="story-copy">
             <span class="kicker">INDUSTRY</span>
             <h3>Студии, издатели и сделки индустрии</h3>
           </div>
-        </article>
+        </a>
 
-        <article class="story-card">
+        <a class="story-card" href="news/">
           <div class="story-art story-art-rpg"></div>
           <div class="story-shade"></div>
           <div class="story-copy">
             <span class="kicker">NEWS</span>
             <h3>Самые интересные анонсы недели</h3>
           </div>
-        </article>
+        </a>
       </div>
     </section>
 
@@ -127,7 +127,7 @@
       <aside class="panel esports-panel" id="esports">
         <div class="section-head">
           <h2>ESPORTS</h2>
-          <a href="#">СМОТРЕТЬ ВСЕ</a>
+          <a href="esports/">СМОТРЕТЬ ВСЕ</a>
         </div>
 
         <div class="tabs">
@@ -157,7 +157,7 @@
           <span class="team">ASTRALIS</span>
         </div>
 
-        <a class="btn full" href="#">Все матчи и расписание <span>›</span></a>
+        <a class="btn full" href="esports/">Все матчи и расписание <span>›</span></a>
       </aside>
     </section>
 
@@ -174,33 +174,33 @@
       </div>
 
       <div class="news-grid">
-        <article class="news-card" data-category="news">
+        <a href="article/?slug=project-enters-production" class="news-card" data-category="news">
           <div class="thumb thumb-1"></div>
           <span class="kicker">NEWS</span>
           <h3>Большой проект перешёл в полноценное производство</h3>
           <div class="meta">1 сентября 2026 · ◌ 24</div>
-        </article>
+        </a>
 
-        <article class="news-card" data-category="esports">
+        <a href="article/?slug=invited-teams-announced" class="news-card" data-category="esports">
           <div class="thumb thumb-2"></div>
           <span class="kicker">ESPORTS</span>
           <h3>Определились приглашённые команды крупного турнира</h3>
           <div class="meta">1 сентября 2026 · ◌ 18</div>
-        </article>
+        </a>
 
-        <article class="news-card" data-category="updates" id="updates">
+        <a href="article/?slug=major-update-new-mechanics" class="news-card" data-category="updates" id="updates">
           <div class="thumb thumb-3"></div>
           <span class="kicker">UPDATES</span>
           <h3>Крупное обновление добавило новые механики</h3>
           <div class="meta">31 августа 2026 · ◌ 37</div>
-        </article>
+        </a>
 
-        <article class="news-card" data-category="industry" id="industry">
+        <a href="article/?slug=technology-partnership" class="news-card" data-category="industry" id="industry">
           <div class="thumb thumb-4"></div>
           <span class="kicker">INDUSTRY</span>
           <h3>Технологические компании расширяют игровое партнёрство</h3>
           <div class="meta">31 августа 2026 · ◌ 22</div>
-        </article>
+        </a>
       </div>
     </section>
 
@@ -229,10 +229,10 @@
     </div>
     <p>NZR.GG — игровое медиа, киберспорт, стримы и будущая соревновательная платформа.</p>
     <div class="footer-links">
-      <a href="#news">News</a>
-      <a href="#esports">Esports</a>
-      <a href="#updates">Updates</a>
-      <a href="#industry">Industry</a>
+      <a href="news/">News</a>
+      <a href="esports/">Esports</a>
+      <a href="updates/">Updates</a>
+      <a href="industry/">Industry</a>
       <a href="#live">Live</a>
     </div>
   </footer>
@@ -247,6 +247,7 @@
     </div>
   </div>
 
-  <script src="app.js?v=05"></script>
+  <script src="content.js?v=06"></script>
+  <script src="app.js?v=06"></script>
 </body>
 </html>
