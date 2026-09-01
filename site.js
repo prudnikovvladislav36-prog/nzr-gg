@@ -32,6 +32,7 @@
       <a href="${path("index.html#live")}">LIVE</a>
     </nav>
     <div class="header-actions">
+      <button class="icon-btn theme-toggle" data-theme-toggle type="button" aria-label="Включить светлую тему">☀</button>
       <button class="icon-btn" id="searchBtn" aria-label="Поиск">⌕</button>
       <a class="social" href="#" aria-label="VK">VK</a>
       <a class="social" href="#" aria-label="Telegram">TG</a>
@@ -66,6 +67,9 @@
   document.querySelector("[data-site-header]")?.insertAdjacentHTML("afterbegin",header);
   document.querySelector("[data-site-footer]")?.insertAdjacentHTML("afterbegin",footer);
   document.body.insertAdjacentHTML("beforeend",search);
+  document.querySelectorAll('[data-theme-toggle]').forEach(btn=>btn.addEventListener('click',()=>window.NZR_THEME?.toggle()));
+  window.NZR_THEME?.sync();
+
 
   const menuBtn=document.getElementById("menuBtn"), mainNav=document.getElementById("mainNav");
   menuBtn?.addEventListener("click",()=>mainNav.classList.toggle("open"));

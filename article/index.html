@@ -3,30 +3,44 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#090909">
 <meta name="description" content="Материал NZR.GG">
-<link rel="stylesheet" href="../styles.css?v=130">
+<script src="../theme.js?v=140"></script>
+<link rel="stylesheet" href="../styles.css?v=140">
 <title>Материал — NZR.GG</title>
 </head>
 <body data-base=".." data-active="" data-boot="site.js,article.js">
 <div data-site-header></div>
 <main>
-  <article class="article-shell shell">
-    <header class="article-hero" id="articleHero">
-      <div class="article-hero-copy">
-        <span class="kicker" id="articleCategory"></span>
-        <h1 id="articleTitle"></h1>
-        <p id="articleLead"></p>
+  <article class="article-shell article-shell-v14 shell">
+    <header class="article-heading">
+      <div class="article-breadcrumbs"><a href="../index.html">NZR.GG</a><span>/</span><a id="articleCategoryLink" href="../news/">NEWS</a></div>
+      <span class="article-section" id="articleCategory"></span>
+      <h1 id="articleTitle"></h1>
+      <p class="article-lead" id="articleLead"></p>
+      <div class="article-meta-row">
         <div class="article-meta" id="articleMeta"></div>
         <div class="article-tags" id="articleTags"></div>
       </div>
     </header>
-    <div class="article-layout">
-      <div><div class="article-body" id="articleBody"></div><div class="article-source" id="articleSource"></div></div>
-      <aside class="article-aside">
+
+    <figure class="article-cover-frame">
+      <img id="articleHeroImage" class="article-cover" src="" alt="" decoding="async" fetchpriority="high">
+    </figure>
+
+    <div class="article-layout article-layout-v14">
+      <div class="article-column">
+        <div class="article-body" id="articleBody"></div>
+        <div class="article-source" id="articleSource"></div>
+        <div class="article-share-row">
+          <button class="btn copy-link" id="copyLink" type="button">Скопировать ссылку</button>
+          <a class="btn" id="backToCategory" href="../news/">Все материалы рубрики</a>
+        </div>
+      </div>
+      <aside class="article-aside article-aside-v14">
         <span class="eyebrow">NZR // EDITORIAL</span>
         <h3>Коротко и по делу</h3>
-        <p>NZR.GG отбирает материалы, которые действительно заслуживают внимания.</p>
-        <button class="btn full copy-link" id="copyLink" type="button">Скопировать ссылку</button>
-        <a class="btn full" href="../news/">Все материалы</a>
+        <p>Факты, контекст и главное — без лишнего информационного шума.</p>
+        <div class="aside-rule"></div>
+        <strong>NZR.GG</strong><small>PLAY • COMPETE • INSPIRE</small>
       </aside>
     </div>
     <section class="related">
@@ -36,5 +50,5 @@
   </article>
 </main>
 <div data-site-footer></div>
-<script src="../boot.js?v=130"></script>
+<script src="../boot.js?v=140"></script>
 </body></html>

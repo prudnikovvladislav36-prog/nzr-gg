@@ -1,3 +1,5 @@
+document.querySelectorAll('[data-theme-toggle]').forEach(btn=>btn.addEventListener('click',()=>window.NZR_THEME?.toggle()));
+window.NZR_THEME?.sync();
 const menuBtn = document.getElementById('menuBtn');
 const mainNav = document.getElementById('mainNav');
 const searchBtn = document.getElementById('searchBtn');
@@ -44,7 +46,7 @@ function renderStoryCards(){
 function renderLatest(){
   const grid=document.getElementById('latestGrid'), data=window.NZR_CONTENT;
   if(!grid || !data?.getPublished) return;
-  grid.innerHTML=data.getPublished().map(a=>`<a href="article/?slug=${encodeURIComponent(a.slug)}" class="news-card" data-category="${a.category}"><div class="thumb" style="background-image:linear-gradient(0deg,rgba(0,0,0,.6),transparent),url('${a.image}');background-size:cover;background-position:center"></div><span class="kicker">${String(a.category||'').toUpperCase()}</span><h3>${a.title}</h3><div class="meta">${a.dateLabel||a.date}</div></a>`).join('');
+  grid.innerHTML=data.getPublished().map(a=>`<a href="article/?slug=${encodeURIComponent(a.slug)}" class="news-card" data-category="${a.category}"><div class="thumb" style="background-image:linear-gradient(0deg,rgba(0,0,0,.6),transparent),url('${a.image}');background-size:cover;background-position:center"></div><h3>${a.title}</h3><div class="meta">${a.dateLabel||a.date}</div></a>`).join('');
 }
 renderHero(); renderStoryCards(); renderLatest();
 

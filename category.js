@@ -15,11 +15,10 @@
     <a class="media-card" href="${base}/article/?slug=${encodeURIComponent(a.slug)}">
       <div class="media-card-image" style="background-image:linear-gradient(0deg,rgba(0,0,0,.72),transparent 62%),url('${base}/${a.image}')"></div>
       <div class="media-card-body">
-        <span class="kicker">${a.category.toUpperCase()}</span>
         <h2>${a.title}</h2>
         <p>${a.excerpt}</p>
         <div class="tag-row">${(a.tags||[]).slice(0,3).map(t=>`<span>#${t}</span>`).join("")}</div>
-        <div class="meta">${a.dateLabel || a.date} · ◌ ${a.comments || 0}</div>
+        <div class="meta">${a.dateLabel || a.date}</div>
       </div>
     </a>`).join("") : `<div class="empty-state"><span class="eyebrow">NZR.GG</span><h2>Материалы готовятся</h2><p>В этой рубрике пока нет опубликованных материалов.</p></div>`;
 })();
