@@ -13,10 +13,10 @@ function renderHero(){
   const data=window.NZR_CONTENT;
   if(!data?.getPublished) return;
   const published=data.getPublished();
-  const featured=published.find(a=>a.featureured) || published.find(a=>a.featured) || published[0];
+  const featured=published.find(a=>a.featured) || published[0];
   if(!featured) return;
   const art=document.querySelector('.hero-art-main');
-  if(art){ art.style.backgroundImage=`url('${featured.image}')`; art.style.backgroundSize='cover'; art.style.backgroundPosition='center'; }
+  if(art){ art.style.setProperty('background-image', `url('${featured.image}')`, 'important'); art.style.setProperty('background-size','cover','important'); art.style.setProperty('background-position','center','important'); }
   const cat=document.getElementById('heroCategory'), title=document.getElementById('heroTitle'), excerpt=document.getElementById('heroExcerpt');
   const link=document.getElementById('heroLink'), meta=document.getElementById('heroMeta');
   if(cat) cat.textContent=String(featured.category||'news').toUpperCase();
