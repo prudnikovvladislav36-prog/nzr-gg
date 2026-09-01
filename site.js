@@ -30,7 +30,6 @@
       <a class="${active==="updates"?"active":""}" href="${path("updates/")}">UPDATES</a>
       <a class="${active==="industry"?"active":""}" href="${path("industry/")}">INDUSTRY</a>
       <a href="${path("index.html#live")}">LIVE</a>
-      <a href="${path("index.html#tournaments")}">TOURNAMENTS <em>SOON</em></a>
     </nav>
     <div class="header-actions">
       <button class="icon-btn" id="searchBtn" aria-label="Поиск">⌕</button>

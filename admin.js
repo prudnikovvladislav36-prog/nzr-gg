@@ -1,225 +1,37 @@
 (() => {
-  const $ = (id) => document.getElementById(id);
-  const form = $("publishForm");
-  const log = $("publishLog");
+  const $=id=>document.getElementById(id), form=$("publishForm"), log=$("publishLog");
+  let remoteArticles=[], editingSlug=null;
+  $("date").value=new Date().toISOString().slice(0,10);
 
-  $("date").value = new Date().toISOString().slice(0,10);
+  function slugify(text){const m={а:'a',б:'b',в:'v',г:'g',д:'d',е:'e',ё:'e',ж:'zh',з:'z',и:'i',й:'y',к:'k',л:'l',м:'m',н:'n',о:'o',п:'p',р:'r',с:'s',т:'t',у:'u',ф:'f',х:'h',ц:'ts',ч:'ch',ш:'sh',щ:'sch',ъ:'',ы:'y',ь:'',э:'e',ю:'yu',я:'ya'};return text.toLowerCase().split('').map(c=>m[c]??c).join('').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,90)}
+  function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+  function cfg(){return{owner:$("repoOwner").value.trim(),repo:$("repoName").value.trim(),branch:$("repoBranch").value.trim(),token:$("githubToken").value.trim()}}
+  async function gh(path,opt={}){const c=cfg();const r=await fetch(`https://api.github.com/repos/${c.owner}/${c.repo}${path}`,{...opt,headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${c.token}`,'X-GitHub-Api-Version':'2022-11-28',...(opt.headers||{})}});if(!r.ok){let msg=`${r.status} ${r.statusText}`;try{msg=(await r.json()).message||msg}catch{}throw new Error(msg)}return r.status===204?null:r.json()}
+  function bytes64(bytes){let b='';for(let i=0;i<bytes.length;i+=0x8000)b+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(b)}
+  const text64=t=>bytes64(new TextEncoder().encode(t));
+  function un64(b64){const b=atob(b64.replace(/\n/g,''));return new TextDecoder().decode(Uint8Array.from(b,c=>c.charCodeAt(0)))}
+  async function file64(f){return bytes64(new Uint8Array(await f.arrayBuffer()))}
+  function ruDate(v){return new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric'}).format(new Date(v+'T12:00:00'))}
+  function parseContent(source){const fake={};new Function('window',source+'; return window.NZR_CONTENT;')(fake);return fake.NZR_CONTENT}
+  function replaceArticles(source,articles){const key='articles:';let k=source.indexOf(key);if(k<0)throw new Error('В content.js не найден articles.');let start=source.indexOf('[',k),depth=0,str=null,escp=false,end=-1;for(let i=start;i<source.length;i++){const ch=source[i];if(str){if(escp){escp=false;continue}if(ch==='\\'){escp=true;continue}if(ch===str)str=null;continue}if(ch==='"'||ch==="'"||ch==='`'){str=ch;continue}if(ch==='[')depth++;if(ch===']'&&--depth===0){end=i;break}}if(end<0)throw new Error('Не удалось прочитать массив articles.');const body='[\n    /* ADMIN_INSERT_POINT */\n'+articles.map(a=>JSON.stringify(a,null,2).replace(/^/gm,'    ')).join(',\n')+'\n  ]';return source.slice(0,start)+body+source.slice(end+1)}
 
-  function slugify(text) {
-    const map = {
-      а:"a",б:"b",в:"v",г:"g",д:"d",е:"e",ё:"e",ж:"zh",з:"z",и:"i",й:"y",
-      к:"k",л:"l",м:"m",н:"n",о:"o",п:"p",р:"r",с:"s",т:"t",у:"u",ф:"f",
-      х:"h",ц:"ts",ч:"ch",ш:"sh",щ:"sch",ъ:"",ы:"y",ь:"",э:"e",ю:"yu",я:"ya"
-    };
-    return text.toLowerCase().split("").map(c => map[c] ?? c).join("")
-      .replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,90);
-  }
+  function updatePreview(){$("previewCategory").textContent=$("category").value.toUpperCase();$("previewTitle").textContent=$("title").value||'Заголовок материала';$("previewExcerpt").textContent=$("excerpt").value||'Здесь появится короткое описание материала.';$("previewTags").innerHTML=$("tags").value.split(',').map(x=>x.trim()).filter(Boolean).slice(0,4).map(t=>`<span>#${esc(t)}</span>`).join('');const f=$("cover").files[0];if(f)$("previewImage").style.backgroundImage=`url("${URL.createObjectURL(f)}")`;else{const existing=remoteArticles.find(a=>a.slug===editingSlug);const img=existing?.image||window.NZR_CONTENT.categories[$("category").value].image;$("previewImage").style.backgroundImage=`url("../${img}")`}}
+  $("title").addEventListener('input',()=>{if(!$("slug").dataset.manual)$("slug").value=slugify($("title").value);updatePreview()});$("slug").addEventListener('input',()=>$("slug").dataset.manual='1');['category','excerpt','tags','body'].forEach(id=>$(id).addEventListener('input',updatePreview));$("cover").addEventListener('change',updatePreview);$("previewBtn").addEventListener('click',updatePreview);
 
-  $("title").addEventListener("input", () => {
-    if (!$("slug").dataset.manual) $("slug").value = slugify($("title").value);
-    updatePreview();
-  });
-  $("slug").addEventListener("input", () => $("slug").dataset.manual = "1");
+  function renderList(){const list=$("cmsList");if(!remoteArticles.length){list.innerHTML='<p class="cms-empty">Материалов пока нет.</p>';return}list.innerHTML=remoteArticles.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date))).map(a=>`<div class="cms-item ${a.slug===editingSlug?'active':''}" data-slug="${esc(a.slug)}"><div><small>${esc((a.category||'').toUpperCase())} · ${esc(a.dateLabel||a.date||'')}</small><strong>${esc(a.title)}</strong><div class="cms-badges"><span class="cms-badge ${a.published===false?'draft':'live'}">${a.published===false?'ЧЕРНОВИК':'ОПУБЛИКОВАНО'}</span>${a.featured?'<span class="cms-badge featured">FEATURED</span>':''}</div></div><span>›</span></div>`).join('');list.querySelectorAll('.cms-item').forEach(el=>el.onclick=()=>editArticle(el.dataset.slug))}
+  function clearEditor(){editingSlug=null;form.reset();$("date").value=new Date().toISOString().slice(0,10);$("published").checked=true;$("repoOwner").value=cfg().owner||'prudnikovvladislav36-prog';$("repoName").value=cfg().repo||'nzr-gg';$("repoBranch").value=cfg().branch||'main';$("editorHeading").textContent='НОВЫЙ МАТЕРИАЛ';$("editStatus").textContent='';$("deleteArticle").hidden=true;delete $("slug").dataset.manual;renderList();updatePreview()}
+  function editArticle(slug){const a=remoteArticles.find(x=>x.slug===slug);if(!a)return;editingSlug=slug;$("category").value=a.category;$("date").value=a.date;$("title").value=a.title;$("slug").value=a.slug;$("slug").dataset.manual='1';$("excerpt").value=a.excerpt||'';$("tags").value=(a.tags||[]).join(', ');$("body").value=(a.body||[]).join('\n\n');$("featured").checked=!!a.featured;$("published").checked=a.published!==false;$("editorHeading").textContent='РЕДАКТИРОВАНИЕ МАТЕРИАЛА';$("editStatus").textContent=a.slug;$("deleteArticle").hidden=false;renderList();updatePreview();window.scrollTo({top:document.getElementById('editorHeading').getBoundingClientRect().top+window.scrollY-120,behavior:'smooth'})}
+  $("newArticle").onclick=clearEditor;
 
-  ["category","excerpt","tags","body"].forEach(id => $(id).addEventListener("input", updatePreview));
-  $("cover").addEventListener("change", updatePreview);
+  async function loadRemote(){const file=await gh(`/contents/content.js?ref=${encodeURIComponent(cfg().branch)}`);const data=parseContent(un64(file.content));remoteArticles=data.articles||[];renderList();return file}
+  $("checkGithub").onclick=async()=>{const st=$("githubStatus");st.textContent='Проверяю...';st.className='admin-status';try{if(!cfg().token)throw new Error('Введи GitHub token');const repo=await gh('');await loadRemote();st.textContent=`OK · ${repo.full_name} · ${remoteArticles.length} материалов`;st.className='admin-status ok'}catch(e){st.textContent=`Ошибка: ${e.message}`;st.className='admin-status error'}};
 
-  function updatePreview() {
-    $("previewCategory").textContent = $("category").value.toUpperCase();
-    $("previewTitle").textContent = $("title").value || "Заголовок материала";
-    $("previewExcerpt").textContent = $("excerpt").value || "Здесь появится короткое описание материала.";
-    $("previewTags").innerHTML = $("tags").value.split(",").map(x=>x.trim()).filter(Boolean)
-      .slice(0,4).map(t=>`<span>#${escapeHtml(t)}</span>`).join("");
+  function articleObject(imagePath){return{slug:$("slug").value.trim(),category:$("category").value,published:$("published").checked,featured:$("featured").checked,date:$("date").value,dateLabel:ruDate($("date").value),author:'NZR.GG Editorial',title:$("title").value.trim(),excerpt:$("excerpt").value.trim(),image:imagePath,comments:remoteArticles.find(a=>a.slug===editingSlug)?.comments||0,tags:$("tags").value.split(',').map(x=>x.trim()).filter(Boolean),body:$("body").value.split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean)}}
+  async function uploadCover(file,slug){if(!file)return remoteArticles.find(a=>a.slug===editingSlug)?.image||window.NZR_CONTENT.categories[$("category").value].image;const ext=(file.name.split('.').pop()||'jpg').toLowerCase().replace('jpeg','jpg'),path=`assets/articles/${slug}.${ext}`;let sha;try{sha=(await gh(`/contents/${path}?ref=${encodeURIComponent(cfg().branch)}`)).sha}catch(e){if(!String(e.message).includes('Not Found'))throw e}await gh(`/contents/${path}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:`Cover: ${slug}`,content:await file64(file),branch:cfg().branch,...(sha?{sha}:{})})});return path}
+  async function commitArticles(articles,message){const file=await gh(`/contents/content.js?ref=${encodeURIComponent(cfg().branch)}`);const source=replaceArticles(un64(file.content),articles);await gh('/contents/content.js',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({message,content:text64(source),sha:file.sha,branch:cfg().branch})})}
 
-    const f = $("cover").files[0];
-    if (f) {
-      const url = URL.createObjectURL(f);
-      $("previewImage").style.backgroundImage = `url("${url}")`;
-    } else {
-      const cat = window.NZR_CONTENT.categories[$("category").value];
-      $("previewImage").style.backgroundImage = `url("../${cat.image}")`;
-    }
-  }
+  form.addEventListener('submit',async e=>{e.preventDefault();log.className='publish-log';log.textContent='Сохраняю...';try{if(!cfg().token)throw new Error('Нужен GitHub token.');const slug=$("slug").value.trim();if(!/^[a-z0-9-]+$/.test(slug))throw new Error('Slug: только a-z, 0-9 и дефисы.');if(remoteArticles.some(a=>a.slug===slug&&a.slug!==editingSlug))throw new Error('Такой slug уже существует.');const image=await uploadCover($("cover").files[0],slug);const article=articleObject(image);let next=remoteArticles.filter(a=>a.slug!==editingSlug);if(article.featured)next=next.map(a=>({...a,featured:false}));next.unshift(article);await commitArticles(next,`${editingSlug?'Update':'Publish'}: ${article.title}`);remoteArticles=next;editingSlug=slug;renderList();$("deleteArticle").hidden=false;$("editorHeading").textContent='РЕДАКТИРОВАНИЕ МАТЕРИАЛА';log.className='publish-log success';log.innerHTML=`Готово. Материал сохранён.<br><strong>GitHub Pages обновится автоматически.</strong><br>Страница: <code>article/?slug=${esc(slug)}</code>`}catch(err){log.className='publish-log error';log.textContent=`Ошибка: ${err.message}`}});
 
-  $("previewBtn").addEventListener("click", updatePreview);
-
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
-  }
-
-  function apiConfig() {
-    return {
-      owner: $("repoOwner").value.trim(),
-      repo: $("repoName").value.trim(),
-      branch: $("repoBranch").value.trim(),
-      token: $("githubToken").value.trim()
-    };
-  }
-
-  async function gh(path, options={}) {
-    const cfg = apiConfig();
-    const res = await fetch(`https://api.github.com/repos/${cfg.owner}/${cfg.repo}${path}`, {
-      ...options,
-      headers: {
-        "Accept":"application/vnd.github+json",
-        "Authorization":`Bearer ${cfg.token}`,
-        "X-GitHub-Api-Version":"2022-11-28",
-        ...(options.headers||{})
-      }
-    });
-    if (!res.ok) {
-      let msg = `${res.status} ${res.statusText}`;
-      try { const j = await res.json(); msg = j.message || msg; } catch {}
-      throw new Error(msg);
-    }
-    return res.status === 204 ? null : res.json();
-  }
-
-  $("checkGithub").addEventListener("click", async () => {
-    $("githubStatus").textContent = "Проверяю...";
-    $("githubStatus").className = "admin-status";
-    try {
-      const cfg = apiConfig();
-      if (!cfg.token) throw new Error("Введи GitHub token");
-      const repo = await gh("");
-      $("githubStatus").textContent = `OK · ${repo.full_name}`;
-      $("githubStatus").className = "admin-status ok";
-    } catch(e) {
-      $("githubStatus").textContent = `Ошибка: ${e.message}`;
-      $("githubStatus").className = "admin-status error";
-    }
-  });
-
-  function bytesToBase64(bytes) {
-    let binary = "";
-    const chunk = 0x8000;
-    for (let i=0;i<bytes.length;i+=chunk) {
-      binary += String.fromCharCode(...bytes.subarray(i, i+chunk));
-    }
-    return btoa(binary);
-  }
-  function textToBase64(text) {
-    return bytesToBase64(new TextEncoder().encode(text));
-  }
-  function base64ToText(b64) {
-    const bin = atob(b64.replace(/\n/g,""));
-    const bytes = Uint8Array.from(bin, c=>c.charCodeAt(0));
-    return new TextDecoder().decode(bytes);
-  }
-  async function fileToBase64(file) {
-    return bytesToBase64(new Uint8Array(await file.arrayBuffer()));
-  }
-
-  function ruDate(dateString) {
-    const d = new Date(dateString + "T12:00:00");
-    return new Intl.DateTimeFormat("ru-RU",{day:"numeric",month:"long",year:"numeric"}).format(d);
-  }
-
-  function articleObject(imagePath) {
-    return {
-      slug: $("slug").value.trim(),
-      category: $("category").value,
-      published: $("published").checked,
-      featured: $("featured").checked,
-      date: $("date").value,
-      dateLabel: ruDate($("date").value),
-      author: "NZR.GG Editorial",
-      title: $("title").value.trim(),
-      excerpt: $("excerpt").value.trim(),
-      image: imagePath,
-      comments: 0,
-      tags: $("tags").value.split(",").map(x=>x.trim()).filter(Boolean),
-      body: $("body").value.split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean)
-    };
-  }
-
-  function toJsObject(obj) {
-    return JSON.stringify(obj, null, 2)
-      .replace(/^/gm, "    ")
-      .replace('"published":', 'published:')
-      .replace('"featured":', 'featured:')
-      .replace('"comments":', 'comments:');
-  }
-
-  async function uploadCover(file, slug) {
-    if (!file) {
-      return window.NZR_CONTENT.categories[$("category").value].image;
-    }
-    const ext = (file.name.split(".").pop() || "jpg").toLowerCase().replace("jpeg","jpg");
-    const path = `assets/articles/${slug}.${ext}`;
-    let sha;
-    try {
-      const current = await gh(`/contents/${path}?ref=${encodeURIComponent(apiConfig().branch)}`);
-      sha = current.sha;
-    } catch(e) {
-      if (!String(e.message).includes("Not Found")) throw e;
-    }
-
-    await gh(`/contents/${path}`, {
-      method:"PUT",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({
-        message:`Upload cover: ${slug}`,
-        content:await fileToBase64(file),
-        branch:apiConfig().branch,
-        ...(sha?{sha}:{})
-      })
-    });
-    return path;
-  }
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    log.className = "publish-log";
-    log.textContent = "Подготовка публикации...";
-
-    try {
-      const cfg = apiConfig();
-      if (!cfg.token) throw new Error("Нужен GitHub token.");
-      if (!/^[a-z0-9-]+$/.test($("slug").value.trim())) throw new Error("Slug должен содержать только a-z, 0-9 и дефисы.");
-
-      // 1. Check duplicate slug from live content
-      if (window.NZR_CONTENT.getBySlug($("slug").value.trim())) {
-        throw new Error("Такой slug уже существует. Выбери другой.");
-      }
-
-      // 2. Upload cover first
-      log.textContent = "Загружаю обложку...";
-      const imagePath = await uploadCover($("cover").files[0], $("slug").value.trim());
-
-      // 3. Read content.js
-      log.textContent = "Читаю базу материалов...";
-      const file = await gh(`/contents/content.js?ref=${encodeURIComponent(cfg.branch)}`);
-      let source = base64ToText(file.content);
-
-      const marker = "/* ADMIN_INSERT_POINT */";
-      if (!source.includes(marker)) throw new Error("В content.js не найден ADMIN_INSERT_POINT. Нужна версия сайта v0.9.");
-
-      // 4. Insert article immediately after marker
-      const article = articleObject(imagePath);
-      const js = toJsObject(article) + ",";
-      source = source.replace(marker, `${marker}\n${js}`);
-
-      // 5. Commit content.js
-      log.textContent = "Публикую материал...";
-      await gh("/contents/content.js", {
-        method:"PUT",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({
-          message:`Publish: ${article.title}`,
-          content:textToBase64(source),
-          sha:file.sha,
-          branch:cfg.branch
-        })
-      });
-
-      log.className = "publish-log success";
-      log.innerHTML = `Готово. Материал отправлен в GitHub.<br><strong>GitHub Pages обновится автоматически.</strong><br>Страница: <code>article/?slug=${escapeHtml(article.slug)}</code>`;
-    } catch(err) {
-      log.className = "publish-log error";
-      log.textContent = `Ошибка: ${err.message}`;
-    }
-  });
-
+  $("deleteArticle").onclick=async()=>{if(!editingSlug)return;const a=remoteArticles.find(x=>x.slug===editingSlug);if(!confirm(`Удалить материал «${a?.title||editingSlug}»? Это действие изменит content.js.`))return;try{log.textContent='Удаляю материал...';const next=remoteArticles.filter(x=>x.slug!==editingSlug);await commitArticles(next,`Delete: ${a?.title||editingSlug}`);remoteArticles=next;clearEditor();log.className='publish-log success';log.textContent='Материал удалён. GitHub Pages обновится автоматически.'}catch(e){log.className='publish-log error';log.textContent=`Ошибка: ${e.message}`}};
   updatePreview();
 })();

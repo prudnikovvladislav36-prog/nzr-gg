@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#090909" />
   <title>NZR.GG — Play • Compete • Inspire</title>
   <meta name="description" content="NZR.GG — новости игр, киберспорт, обновления, индустрия и стримы." />
-  <link rel="stylesheet" href="styles.css?v=09" />
+  <link rel="stylesheet" href="styles.css?v=100" />
 </head>
 <body data-base="." data-boot="app.js">
   <div class="noise"></div>
@@ -27,7 +27,6 @@
       <a href="updates/">UPDATES</a>
       <a href="industry/">INDUSTRY</a>
       <a href="#live">LIVE</a>
-      <a href="#tournaments">TOURNAMENTS <em>SOON</em></a>
     </nav>
 
     <div class="header-actions">
@@ -48,10 +47,10 @@
         <div class="hero-art hero-art-main"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <span class="eyebrow">NZR // EDITORIAL</span><span class="kicker">NEWS</span>
-          <h1>Главные события <em>игрового мира</em> — в одном месте</h1>
-          <p>Новости, крупные релизы, обновления и авторский взгляд NZR.GG без информационного шума.</p>
-          <div class="hero-actions"><a class="btn primary" href="news/">Читать материалы <span>›</span></a><span class="hero-note">01 / 04 · EDITOR'S PICK</span></div>
+          <span class="eyebrow">NZR.GG // EDITORIAL</span><span class="kicker" id="heroCategory">NEWS</span>
+          <h1 id="heroTitle">Главные события игрового мира</h1>
+          <p id="heroExcerpt">Отборные материалы NZR.GG без информационного шума.</p>
+          <div class="hero-actions"><a class="btn primary" id="heroLink" href="news/">Читать материал <span>›</span></a><span class="hero-note" id="heroMeta"></span></div>
         </div>
       </article>
 
@@ -176,7 +175,7 @@
       <div class="news-grid" id="latestGrid"></div>
     </section>
 
-    <section class="roadmap shell" id="tournaments">
+    <section class="roadmap shell" id="platform">
       <div>
         <span class="kicker">NZR.GG PLATFORM</span>
         <h2>Следующий этап — собственная игровая экосистема</h2>
@@ -185,7 +184,7 @@
         <span>01 · MEDIA</span>
         <span>02 · LIVE</span>
         <span>03 · ESPORTS</span>
-        <span>04 · TOURNAMENTS</span>
+        <span>04 · COMMUNITY</span>
         <span>05 · NZR ID</span>
       </div>
     </section>
@@ -219,6 +218,6 @@
     </div>
   </div>
 
-<script src="boot.js?v=091"></script>
+<script src="boot.js?v=100"></script>
 </body>
 </html>

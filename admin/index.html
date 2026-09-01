@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#090909">
   <meta name="robots" content="noindex,nofollow">
   <title>NZR.GG Admin</title>
-  <link rel="stylesheet" href="../styles.css?v=091">
+  <link rel="stylesheet" href="../styles.css?v=100">
 </head>
 <body class="admin-page" data-base=".." data-boot="site.js,admin.js">
   <div data-site-header></div>
@@ -15,8 +15,8 @@
     <section class="admin-hero">
       <div>
         <span class="eyebrow">NZR.GG // ADMIN</span>
-        <h1>ПУБЛИКАЦИЯ МАТЕРИАЛОВ</h1>
-        <p>Создавай NEWS / ESPORTS / UPDATES / INDUSTRY прямо через сайт. После публикации GitHub Pages автоматически обновит NZR.GG.</p>
+        <h1>NZR.GG CMS</h1>
+        <p>Создавай, редактируй, снимай с публикации и удаляй материалы NEWS / ESPORTS / UPDATES / INDUSTRY.</p>
       </div>
       <div class="admin-security">
         <strong>ВАЖНО</strong>
@@ -48,8 +48,13 @@
           </div>
         </div>
 
+        <div class="admin-section admin-library" id="adminLibrary">
+          <div class="section-head"><h2>МАТЕРИАЛЫ</h2><button type="button" class="btn" id="newArticle">+ Новый материал</button></div>
+          <div class="cms-list" id="cmsList"><p class="cms-empty">Проверь доступ к GitHub, чтобы загрузить материалы.</p></div>
+        </div>
+
         <div class="admin-section">
-          <div class="section-head"><h2>МАТЕРИАЛ</h2></div>
+          <div class="section-head"><h2 id="editorHeading">НОВЫЙ МАТЕРИАЛ</h2><span class="admin-status" id="editStatus"></span></div>
           <div class="form-grid cols-2">
             <label>Рубрика
               <select id="category">
@@ -102,7 +107,8 @@
 
         <div class="admin-actions publish-actions">
           <button type="button" class="btn" id="previewBtn">Предпросмотр</button>
-          <button type="submit" class="btn primary">Опубликовать в NZR.GG</button>
+          <button type="button" class="btn danger" id="deleteArticle" hidden>Удалить</button>
+          <button type="submit" class="btn primary" id="saveArticle">Сохранить в NZR.GG</button>
         </div>
         <div class="publish-log" id="publishLog"></div>
       </form>
@@ -122,6 +128,6 @@
 
   <div data-site-footer></div>
 
-<script src="../boot.js?v=091"></script>
+<script src="../boot.js?v=100"></script>
 </body>
 </html>

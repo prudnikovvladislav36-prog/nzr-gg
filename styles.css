@@ -661,3 +661,9 @@ body{overflow-x:hidden}
   .admin-hero{padding:22px}
   .admin-form,.admin-preview{padding:14px}
 }
+/* v1.0 CMS */
+.cms-list{display:grid;gap:8px;margin-top:12px}
+.cms-item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;border:1px solid #242424;background:#0b0b0b;padding:12px 14px;cursor:pointer}
+.cms-item:hover,.cms-item.active{border-color:var(--gold);background:#0e0d09}
+.cms-item strong{display:block;color:#eee;font-size:13px;margin:4px 0}.cms-item small{color:#777}.cms-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}.cms-badge{font-size:9px;border:1px solid #333;padding:3px 5px;color:#999}.cms-badge.live{color:#62c881;border-color:#315b3f}.cms-badge.draft{color:#e9a8a8;border-color:#663838}.cms-badge.featured{color:var(--gold);border-color:#73510d}.cms-empty{color:#777;font-size:12px}.btn.danger{border-color:#6b2b2b;color:#e66}.btn.danger:hover{background:#351313}.admin-library .section-head{align-items:center}.admin-library .section-head .btn{margin-left:auto}
+.hero-main .hero-art-main{transition:background-image .2s ease}.hero-content h1{max-width:760px}.hero-note:empty{display:none}
