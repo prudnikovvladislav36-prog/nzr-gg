@@ -429,3 +429,88 @@ body{overflow-x:hidden}
   .hero-overlay{background:linear-gradient(0deg,rgba(0,0,0,.97),rgba(0,0,0,.10) 72%)!important}
   .hero-art-main{background-position:18% center!important}
 }
+
+/* ===== NZR.GG v0.5 — BRAND & UI POLISH ===== */
+
+/* Exact user-approved NZR emblem */
+.brand-mark-img{
+  width:52px;height:52px;border-radius:50%;
+  border:1px solid rgba(242,160,0,.72);
+  box-shadow:0 0 18px rgba(242,160,0,.10);
+  background:#030303;
+}
+.brand-mark-img img{
+  width:100%;height:100%;object-fit:cover;border-radius:50%;
+  transform:none!important;
+}
+.brand-mark.small.brand-mark-img{width:38px;height:38px}
+
+/* Cleaner header hierarchy */
+.header-inner{min-height:76px}
+.brand-copy strong{font-size:23px}
+.brand-copy small{letter-spacing:1.55px}
+.nav a{padding:29px 0 25px}
+.icon-btn,.social-mini{
+  background:rgba(255,255,255,.015);
+  transition:border-color .18s ease,color .18s ease,background .18s ease;
+}
+.icon-btn:hover,.social-mini:hover{
+  border-color:var(--gold);color:var(--gold);background:rgba(242,160,0,.05)
+}
+
+/* Make hero feel like one editorial composition rather than an image box */
+.hero-main{min-height:445px}
+.hero-art-main{
+  background-position:8% center!important;
+}
+.hero-main:after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:
+    linear-gradient(90deg,rgba(242,160,0,.12),transparent 1px) 0 0/92px 100%,
+    linear-gradient(rgba(242,160,0,.06),transparent 1px) 0 0/100% 92px;
+  opacity:.11;
+}
+.hero-content{z-index:4;margin-left:43%;padding-top:54px}
+.hero-content h1{line-height:.98}
+.hero-content p{font-size:14px;line-height:1.6;color:#b9b9b9}
+.eyebrow{color:#8d8d8d}
+.hero-note{color:#666}
+
+/* Cards: stronger premium editorial treatment */
+.story-card{
+  border-color:rgba(242,160,0,.45);
+  background:#070707;
+}
+.story-card:after{
+  content:"";position:absolute;left:14px;right:14px;bottom:10px;height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent 65%);opacity:.20
+}
+.story-card h3{line-height:1.12}
+.story-card:hover{box-shadow:0 12px 38px rgba(0,0,0,.55),0 0 0 1px rgba(242,160,0,.12) inset}
+
+/* Dashboard alignment */
+.dashboard{align-items:stretch}
+.panel{border-color:rgba(242,160,0,.34)}
+.section-head{margin-bottom:14px}
+.section-head h2{letter-spacing:.2px}
+.schedule-row,.match{min-height:52px}
+
+/* Better live presentation */
+.stream-card{min-height:208px}
+.stream-preview{min-height:208px}
+.stream-copy{padding:24px 22px}
+.stream-copy h3{font-size:23px;margin-bottom:8px}
+
+/* Remove visual noise from old logo asset if browser cached it */
+.brand-mark:not(.brand-mark-img){background:none}
+
+/* Responsive refinements */
+@media(max-width:1100px){
+  .nav{gap:24px}
+  .hero-content{margin-left:40%}
+}
+@media(max-width:900px){
+  .brand-mark-img{width:46px;height:46px}
+  .hero-content{margin-left:0;padding:238px 24px 30px}
+  .hero-content h1{font-size:clamp(34px,8vw,48px)}
+}
