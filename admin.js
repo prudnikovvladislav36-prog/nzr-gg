@@ -193,7 +193,7 @@
       let source = base64ToText(file.content);
 
       const marker = "/* ADMIN_INSERT_POINT */";
-      if (!source.includes(marker)) throw new Error("В content.js не найден ADMIN_INSERT_POINT. Нужна версия сайта v0.8.");
+      if (!source.includes(marker)) throw new Error("В content.js не найден ADMIN_INSERT_POINT. Нужна версия сайта v0.9.");
 
       // 4. Insert article immediately after marker
       const article = articleObject(imagePath);
