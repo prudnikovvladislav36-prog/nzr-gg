@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#090909" />
+  <title>NZR.GG — Play • Compete • Inspire</title>
+  <meta name="description" content="NZR.GG — новости игр, киберспорт, обновления, индустрия и стримы." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="NZR.GG">
+      <div class="brand-mark">NZR</div>
+      <div class="brand-copy">
+        <strong>NZR<span>.GG</span></strong>
+        <small>PLAY • COMPETE • INSPIRE</small>
+      </div>
+    </a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Открыть меню">☰</button>
+
+    <nav class="main-nav" id="mainNav">
+      <a class="active" href="#news">NEWS</a>
+      <a href="#esports">ESPORTS</a>
+      <a href="#updates">UPDATES</a>
+      <a href="#industry">INDUSTRY</a>
+      <a href="#live">LIVE</a>
+      <a href="#tournaments">TOURNAMENTS <em>SOON</em></a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="searchBtn" aria-label="Поиск">⌕</button>
+      <a class="social" href="#" aria-label="VK">VK</a>
+      <a class="social" href="#" aria-label="Telegram">TG</a>
+      <a class="social" href="#" aria-label="Twitch">TW</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <article class="hero-main">
+        <div class="hero-art hero-art-main"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="kicker">NEWS</span>
+          <h1>Главные события игрового мира — в одном месте</h1>
+          <p>Новости, крупные релизы, обновления и авторский взгляд NZR.GG без информационного шума.</p>
+          <a class="btn primary" href="#news">Читать материалы <span>›</span></a>
+        </div>
+      </article>
+
+      <div class="hero-grid">
+        <article class="story-card accent-card">
+          <div class="story-art story-art-esports"></div>
+          <div class="story-shade"></div>
+          <div class="story-copy">
+            <span class="kicker">ESPORTS</span>
+            <h3>Киберспорт: матчи, турниры и трансферы</h3>
+          </div>
+        </article>
+
+        <article class="story-card">
+          <div class="story-art story-art-update"></div>
+          <div class="story-shade"></div>
+          <div class="story-copy">
+            <span class="kicker">UPDATES</span>
+            <h3>Крупные патчи и новый контент</h3>
+          </div>
+        </article>
+
+        <article class="story-card">
+          <div class="story-art story-art-industry"></div>
+          <div class="story-shade"></div>
+          <div class="story-copy">
+            <span class="kicker">INDUSTRY</span>
+            <h3>Студии, издатели и сделки индустрии</h3>
+          </div>
+        </article>
+
+        <article class="story-card">
+          <div class="story-art story-art-rpg"></div>
+          <div class="story-shade"></div>
+          <div class="story-copy">
+            <span class="kicker">NEWS</span>
+            <h3>Самые интересные анонсы недели</h3>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="dashboard shell">
+      <div class="panel live-panel" id="live">
+        <div class="section-head">
+          <h2>LIVE NOW</h2>
+          <span class="slash">///</span>
+        </div>
+
+        <div class="live-grid">
+          <article class="stream-card">
+            <div class="stream-preview">
+              <span class="live-badge">LIVE</span>
+              <div class="stream-glow"></div>
+            </div>
+            <div class="stream-copy">
+              <h3>NZR.GG STREAM</h3>
+              <p>Игры, общение и соревновательные эфиры.</p>
+              <div class="stream-meta">● 1 245 зрителей</div>
+              <a class="btn" href="#">Смотреть сейчас</a>
+            </div>
+          </article>
+
+          <div class="schedule">
+            <h3>БЛИЖАЙШИЕ СТРИМЫ</h3>
+            <div class="schedule-row"><b>02.09<br>19:00</b><span><strong>APEX LEGENDS</strong><small>Ранговые игры и общение</small></span><i>›</i></div>
+            <div class="schedule-row"><b>03.09<br>18:00</b><span><strong>CS2</strong><small>Тренировка перед турниром</small></span><i>›</i></div>
+            <div class="schedule-row"><b>04.09<br>20:00</b><span><strong>ESCAPE FROM TARKOV</strong><small>Вечерний рейд с подписчиками</small></span><i>›</i></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel esports-panel" id="esports">
+        <div class="section-head">
+          <h2>ESPORTS</h2>
+          <a href="#">СМОТРЕТЬ ВСЕ</a>
+        </div>
+
+        <div class="tabs">
+          <button class="tab active">МАТЧИ</button>
+          <button class="tab">РЕЗУЛЬТАТЫ</button>
+          <button class="tab">ТУРНИРЫ</button>
+        </div>
+
+        <h4>БЛИЖАЙШИЕ МАТЧИ</h4>
+
+        <div class="match">
+          <time>02.09<br>17:00</time>
+          <span class="team">NAVI</span>
+          <b>VS</b>
+          <span class="team">G2</span>
+        </div>
+        <div class="match">
+          <time>02.09<br>20:30</time>
+          <span class="team">SPIRIT</span>
+          <b>VS</b>
+          <span class="team">FAZE</span>
+        </div>
+        <div class="match">
+          <time>03.09<br>20:00</time>
+          <span class="team">VITALITY</span>
+          <b>VS</b>
+          <span class="team">ASTRALIS</span>
+        </div>
+
+        <a class="btn full" href="#">Все матчи и расписание <span>›</span></a>
+      </aside>
+    </section>
+
+    <section class="latest shell" id="news">
+      <div class="section-head latest-head">
+        <h2>ПОСЛЕДНЕЕ</h2>
+        <div class="filters" role="tablist">
+          <button class="filter active" data-filter="all">ВСЕ</button>
+          <button class="filter" data-filter="news">NEWS</button>
+          <button class="filter" data-filter="esports">ESPORTS</button>
+          <button class="filter" data-filter="updates">UPDATES</button>
+          <button class="filter" data-filter="industry">INDUSTRY</button>
+        </div>
+      </div>
+
+      <div class="news-grid">
+        <article class="news-card" data-category="news">
+          <div class="thumb thumb-1"></div>
+          <span class="kicker">NEWS</span>
+          <h3>Большой проект перешёл в полноценное производство</h3>
+          <div class="meta">1 сентября 2026 · ◌ 24</div>
+        </article>
+
+        <article class="news-card" data-category="esports">
+          <div class="thumb thumb-2"></div>
+          <span class="kicker">ESPORTS</span>
+          <h3>Определились приглашённые команды крупного турнира</h3>
+          <div class="meta">1 сентября 2026 · ◌ 18</div>
+        </article>
+
+        <article class="news-card" data-category="updates" id="updates">
+          <div class="thumb thumb-3"></div>
+          <span class="kicker">UPDATES</span>
+          <h3>Крупное обновление добавило новые механики</h3>
+          <div class="meta">31 августа 2026 · ◌ 37</div>
+        </article>
+
+        <article class="news-card" data-category="industry" id="industry">
+          <div class="thumb thumb-4"></div>
+          <span class="kicker">INDUSTRY</span>
+          <h3>Технологические компании расширяют игровое партнёрство</h3>
+          <div class="meta">31 августа 2026 · ◌ 22</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="roadmap shell" id="tournaments">
+      <div>
+        <span class="kicker">NZR.GG PLATFORM</span>
+        <h2>Следующий этап — собственная игровая экосистема</h2>
+      </div>
+      <div class="roadmap-items">
+        <span>01 · MEDIA</span>
+        <span>02 · LIVE</span>
+        <span>03 · ESPORTS</span>
+        <span>04 · TOURNAMENTS</span>
+        <span>05 · NZR ID</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer shell">
+    <div class="footer-brand">
+      <div class="brand-mark small">NZR</div>
+      <div>
+        <strong>NZR<span>.GG</span></strong>
+        <small>PLAY • COMPETE • INSPIRE</small>
+      </div>
+    </div>
+    <p>NZR.GG — игровое медиа, киберспорт, стримы и будущая соревновательная платформа.</p>
+    <div class="footer-links">
+      <a href="#news">News</a>
+      <a href="#esports">Esports</a>
+      <a href="#updates">Updates</a>
+      <a href="#industry">Industry</a>
+      <a href="#live">Live</a>
+    </div>
+  </footer>
+
+  <div class="search-modal" id="searchModal" aria-hidden="true">
+    <div class="search-box">
+      <button class="close-search" id="closeSearch">×</button>
+      <span class="kicker">SEARCH</span>
+      <h2>Поиск по NZR.GG</h2>
+      <input type="search" placeholder="Игра, команда, турнир..." autofocus />
+      <p>Поиск будет подключён к контентной базе на следующем этапе.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
