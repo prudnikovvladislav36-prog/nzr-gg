@@ -593,3 +593,21 @@ body{overflow-x:hidden}
  .article-hero h1{font-size:38px}
  .article-body{font-size:17px}
 }
+
+/* ===== NZR.GG v0.7 — CONTENT SYSTEM ===== */
+.tag-row,.article-tags{display:flex;gap:7px;flex-wrap:wrap}
+.tag-row{margin:10px 0 12px}
+.tag-row span,.article-tags span{
+  border:1px solid #2b2b2b;padding:5px 7px;color:#888;font:800 9px/1 Arial,sans-serif;text-transform:uppercase
+}
+.article-tags{margin-top:16px}
+.article-tags span{border-color:rgba(242,160,0,.28);color:#c28b1a;background:rgba(242,160,0,.035)}
+.copy-link{cursor:pointer;margin-bottom:8px;background:#0b0b0b;color:#fff}
+.empty-state,.not-found{
+  grid-column:1/-1;border:1px solid rgba(242,160,0,.28);padding:52px;min-height:260px;
+  display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,rgba(242,160,0,.04),transparent)
+}
+.empty-state h2,.not-found h1{font-size:clamp(32px,5vw,62px);margin:8px 0}
+.empty-state p,.not-found p{color:#8d8d8d;max-width:620px}
+.not-found{margin-top:18px;min-height:560px}
+.not-found .btn{width:max-content;margin-top:18px}

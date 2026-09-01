@@ -71,7 +71,7 @@
   input?.addEventListener("input",()=>{
     const q=input.value.trim().toLowerCase();
     if(!q){results.innerHTML=""; return;}
-    const matches=(window.NZR_CONTENT?.articles||[]).filter(a =>
+    const matches=(window.NZR_CONTENT?.getPublished?.() || window.NZR_CONTENT?.articles || []).filter(a =>
       (a.title+" "+a.excerpt+" "+a.category).toLowerCase().includes(q)
     ).slice(0,6);
     results.innerHTML=matches.length ? matches.map(a=>`
