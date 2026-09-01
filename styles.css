@@ -893,3 +893,28 @@ body{overflow-x:hidden}
 .stream-link{margin-top:8px;min-height:40px;border:1px solid var(--gold);background:transparent;color:inherit;font:inherit;font-weight:900;padding:10px 14px;text-align:center}
 .stream-link.disabled{opacity:.45;cursor:not-allowed}
 @media(max-width:760px){.stream-card-compact{grid-template-columns:1fr}.stream-preview-16x9{height:auto!important}.stream-card-compact .stream-copy{padding:16px}}
+
+/* ===== NZR.GG v1.8 — LIVE + THEME HARDENING ===== */
+/* Header must be opaque in both themes: page content never bleeds through it. */
+.site-header{isolation:isolate;z-index:1000!important;background:#090909!important;backdrop-filter:none!important}
+:root[data-theme="light"] .site-header{background:#f7f4ee!important;box-shadow:0 8px 22px rgba(33,25,12,.14)!important}
+
+/* LIVE is rebuilt as a compact, collision-proof 16:9 card. */
+.live-grid{grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr)!important;align-items:start!important}
+.stream-card.stream-card-compact{display:grid!important;grid-template-columns:minmax(280px,1.05fr) minmax(220px,.95fr)!important;min-height:0!important;height:auto!important;overflow:hidden!important;align-items:stretch!important}
+.stream-card-compact .stream-preview-16x9{width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:16/9!important;background-image:url("assets/live-clean.jpg")!important;background-size:cover!important;background-position:center!important;overflow:hidden!important}
+.stream-card-compact .stream-copy{position:relative!important;display:flex!important;flex-direction:column!important;justify-content:center!important;min-width:0!important;padding:18px 20px!important;gap:8px!important;background:var(--panel)!important}
+.stream-card-compact .stream-copy h3{font-size:20px!important;line-height:1.05!important;margin:0!important}
+.stream-card-compact .stream-copy p,.stream-card-compact .stream-meta{margin:0!important;line-height:1.45!important}
+.stream-card-compact .stream-link{position:static!important;display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;min-height:42px!important;margin:7px 0 0!important;box-sizing:border-box!important;transform:none!important}
+.stream-card-compact .stream-glow,.stream-card-compact .stream-scan{pointer-events:none}
+:root[data-theme="light"] .stream-card-compact .stream-copy{background:#faf8f3!important}
+
+@media(max-width:1050px){
+  .dashboard{grid-template-columns:1fr!important}
+  .live-grid{grid-template-columns:1fr!important}
+}
+@media(max-width:720px){
+  .stream-card.stream-card-compact{grid-template-columns:1fr!important}
+  .stream-card-compact .stream-copy{padding:15px!important}
+}
