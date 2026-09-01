@@ -46,6 +46,7 @@ window.NZR_CONTENT = {
    * HTML-страницы создавать не нужно.
    */
   articles: [
+    /* ADMIN_INSERT_POINT */
     {
       slug: "project-enters-production",
       category: "news",

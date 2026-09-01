@@ -1,7 +1,16 @@
 
 (function(){
   const base = document.body.dataset.base || ".";
-  const active = document.body.dataset.active || "";
+  let active = document.body.dataset.active || "";
+  if (!active && location.pathname.includes("/article/")) {
+    const slug = new URLSearchParams(location.search).get("slug");
+    const found = window.NZR_CONTENT?.getBySlug?.(slug) ||
+      (window.NZR_CONTENT?.articles || []).find(a => a.slug === slug);
+    if (found?.category) {
+      active = found.category;
+      document.body.dataset.active = active;
+    }
+  }
 
   function path(p){ return base + "/" + p; }
 

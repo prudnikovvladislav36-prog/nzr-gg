@@ -611,3 +611,53 @@ body{overflow-x:hidden}
 .empty-state p,.not-found p{color:#8d8d8d;max-width:620px}
 .not-found{margin-top:18px;min-height:560px}
 .not-found .btn{width:max-content;margin-top:18px}
+
+/* ===== NZR.GG v0.8 — ADMIN PUBLISHER ===== */
+.admin-shell{padding:22px 18px 60px}
+.admin-hero{
+  border:1px solid rgba(242,160,0,.35);
+  padding:30px;display:grid;grid-template-columns:1fr 380px;gap:34px;align-items:center;
+  background:linear-gradient(120deg,rgba(242,160,0,.06),transparent 48%);
+}
+.admin-hero h1{font-size:clamp(34px,4vw,58px);margin:6px 0 12px}
+.admin-hero>div>p{color:#aaa;line-height:1.6}
+.admin-security{border-left:2px solid var(--gold);padding:12px 18px;background:#0a0a0a}
+.admin-security strong{color:var(--gold)}
+.admin-security p{font-size:12px!important;margin:8px 0 0!important}
+.admin-grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:18px;margin-top:18px}
+.admin-form,.admin-preview{border:1px solid rgba(242,160,0,.3);background:#080808;padding:22px}
+.admin-section{padding-bottom:24px;margin-bottom:24px;border-bottom:1px solid #222}
+.form-grid{display:grid;gap:12px}
+.form-grid.cols-2{grid-template-columns:1fr 1fr}
+.admin-form label{display:flex;flex-direction:column;gap:7px;color:#bbb;font-size:11px;font-weight:800;margin-bottom:13px}
+.admin-form input,.admin-form textarea,.admin-form select{
+  width:100%;background:#050505;border:1px solid #2b2b2b;color:#fff;padding:12px;outline:none
+}
+.admin-form input:focus,.admin-form textarea:focus,.admin-form select:focus{border-color:var(--gold)}
+.admin-form small{font-size:10px;color:#666;font-weight:400}
+.check-label{flex-direction:row!important;align-items:center!important}
+.check-label input{width:auto}
+.admin-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.publish-actions{justify-content:flex-end}
+.admin-status{font-size:11px;color:#777}
+.admin-status.ok{color:#58b778}
+.admin-status.error{color:#e45a5a}
+.admin-preview{height:max-content;position:sticky;top:104px}
+.preview-card{border:1px solid #242424;background:#070707;padding:14px;margin-top:10px}
+.preview-image{height:210px;background-size:cover;background-position:center;margin-bottom:14px;border:1px solid #222}
+.preview-card h2{font-size:22px;line-height:1.05;text-transform:uppercase}
+.preview-card p{font-size:12px;color:#999;line-height:1.5}
+.publish-log{margin-top:18px;border:1px solid #222;padding:14px;color:#888;font-size:12px;min-height:48px}
+.publish-log.success{border-color:#315f3e;color:#8ed0a2}
+.publish-log.error{border-color:#713333;color:#e58787}
+.publish-log code{color:var(--gold)}
+.admin-page .site-footer{margin-top:0}
+@media(max-width:1000px){
+  .admin-hero,.admin-grid{grid-template-columns:1fr}
+  .admin-preview{position:static}
+}
+@media(max-width:650px){
+  .form-grid.cols-2{grid-template-columns:1fr}
+  .admin-hero{padding:22px}
+  .admin-form,.admin-preview{padding:14px}
+}

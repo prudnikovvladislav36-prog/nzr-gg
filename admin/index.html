@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="robots" content="noindex,nofollow">
+  <title>NZR.GG Admin</title>
+  <link rel="stylesheet" href="../styles.css?v=08">
+</head>
+<body class="admin-page">
+  <div data-site-header></div>
+
+  <main class="admin-shell shell">
+    <section class="admin-hero">
+      <div>
+        <span class="eyebrow">NZR.GG // ADMIN</span>
+        <h1>ПУБЛИКАЦИЯ МАТЕРИАЛОВ</h1>
+        <p>Создавай NEWS / ESPORTS / UPDATES / INDUSTRY прямо через сайт. После публикации GitHub Pages автоматически обновит NZR.GG.</p>
+      </div>
+      <div class="admin-security">
+        <strong>ВАЖНО</strong>
+        <p>GitHub-токен не сохраняется в коде сайта и не отправляется никуда, кроме GitHub API. Не публикуй и не вставляй его в файлы репозитория.</p>
+      </div>
+    </section>
+
+    <section class="admin-grid">
+      <form class="admin-form" id="publishForm">
+        <div class="admin-section">
+          <div class="section-head"><h2>ДОСТУП К GITHUB</h2></div>
+          <div class="form-grid cols-2">
+            <label>Owner
+              <input id="repoOwner" value="prudnikovvladislav36-prog" required>
+            </label>
+            <label>Repository
+              <input id="repoName" value="nzr-gg" required>
+            </label>
+            <label>Branch
+              <input id="repoBranch" value="main" required>
+            </label>
+            <label>Fine-grained token
+              <input id="githubToken" type="password" autocomplete="off" placeholder="github_pat_..." required>
+            </label>
+          </div>
+          <div class="admin-actions">
+            <button type="button" class="btn" id="checkGithub">Проверить доступ</button>
+            <span class="admin-status" id="githubStatus">Не проверено</span>
+          </div>
+        </div>
+
+        <div class="admin-section">
+          <div class="section-head"><h2>МАТЕРИАЛ</h2></div>
+          <div class="form-grid cols-2">
+            <label>Рубрика
+              <select id="category">
+                <option value="news">NEWS</option>
+                <option value="esports">ESPORTS</option>
+                <option value="updates">UPDATES</option>
+                <option value="industry">INDUSTRY</option>
+              </select>
+            </label>
+            <label>Дата
+              <input id="date" type="date" required>
+            </label>
+          </div>
+
+          <label>Заголовок
+            <input id="title" maxlength="180" placeholder="Заголовок материала" required>
+          </label>
+
+          <label>Slug
+            <input id="slug" pattern="[a-z0-9-]+" placeholder="zapolnitsya-avtomaticheski" required>
+          </label>
+
+          <label>Короткое описание
+            <textarea id="excerpt" rows="3" maxlength="420" placeholder="Описание для карточки и вступления..." required></textarea>
+          </label>
+
+          <label>Теги
+            <input id="tags" placeholder="fable, xbox, rpg">
+          </label>
+
+          <label>Обложка
+            <input id="cover" type="file" accept="image/png,image/jpeg,image/webp">
+            <small>PNG/JPG/WEBP. Если не выбрать файл — будет использована стандартная обложка рубрики.</small>
+          </label>
+
+          <label>Текст статьи
+            <textarea id="body" rows="14" placeholder="Первый абзац.
+
+Второй абзац.
+
+Третий абзац." required></textarea>
+            <small>Разделяй абзацы пустой строкой.</small>
+          </label>
+
+          <div class="form-grid cols-2">
+            <label class="check-label"><input id="featured" type="checkbox"> Featured / избранное</label>
+            <label class="check-label"><input id="published" type="checkbox" checked> Опубликовать сразу</label>
+          </div>
+        </div>
+
+        <div class="admin-actions publish-actions">
+          <button type="button" class="btn" id="previewBtn">Предпросмотр</button>
+          <button type="submit" class="btn primary">Опубликовать в NZR.GG</button>
+        </div>
+        <div class="publish-log" id="publishLog"></div>
+      </form>
+
+      <aside class="admin-preview">
+        <span class="eyebrow">LIVE PREVIEW</span>
+        <div class="preview-card">
+          <div class="preview-image" id="previewImage"></div>
+          <span class="kicker" id="previewCategory">NEWS</span>
+          <h2 id="previewTitle">Заголовок материала</h2>
+          <p id="previewExcerpt">Здесь появится короткое описание материала.</p>
+          <div class="tag-row" id="previewTags"></div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <div data-site-footer></div>
+
+  <script src="../content.js?v=08"></script>
+  <script src="../site.js?v=08"></script>
+  <script src="../admin.js?v=08"></script>
+</body>
+</html>
