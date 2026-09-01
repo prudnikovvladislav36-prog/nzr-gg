@@ -46,7 +46,7 @@
       <div class="brand-mark small brand-mark-img"><img src="${path("assets/nzr-logo-official.jpg")}" alt="NZR"></div>
       <div><strong>NZR<span>.GG</span></strong><small>PLAY • COMPETE • INSPIRE</small></div>
     </div>
-    <p>NZR.GG — игровое медиа, киберспорт, стримы и будущая соревновательная платформа.</p>
+    <p>NZR.GG — игровое медиа: новости, киберспорт и стримы.</p>
     <div class="footer-links">
       <a href="${path("news/")}">News</a><a href="${path("esports/")}">Esports</a>
       <a href="${path("updates/")}">Updates</a><a href="${path("industry/")}">Industry</a>
@@ -67,8 +67,7 @@
   document.querySelector("[data-site-header]")?.insertAdjacentHTML("afterbegin",header);
   document.querySelector("[data-site-footer]")?.insertAdjacentHTML("afterbegin",footer);
   document.body.insertAdjacentHTML("beforeend",search);
-  document.querySelectorAll('[data-theme-toggle]').forEach(btn=>btn.addEventListener('click',()=>window.NZR_THEME?.toggle()));
-  window.NZR_THEME?.sync();
+  window.NZR_THEME?.bind?.();
 
 
   const menuBtn=document.getElementById("menuBtn"), mainNav=document.getElementById("mainNav");

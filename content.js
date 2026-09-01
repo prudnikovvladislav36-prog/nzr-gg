@@ -214,6 +214,117 @@ window.NZR_CONTENT = {
         "Отдельно интересно, что Remastered заявлен как бесплатное обновление для владельцев оригинальной игры. Таким образом CD PROJEKT RED одновременно обновляет техническую основу старой RPG и возвращается к ней с новым сюжетным контентом."
       ]
     }
+    ,
+    {
+      slug: "state-of-play-september-3-2026",
+      category: "news",
+      published: true,
+      featured: false,
+      date: "2026-08-31",
+      dateLabel: "31 августа 2026",
+      author: "NZR.GG Editorial",
+      title: "Sony проведёт два State of Play подряд 3 сентября",
+      excerpt: "PlayStation анонсировала две трансляции подряд: обычный State of Play и отдельный выпуск State of Play Japan с играми студий Японии и Азии.",
+      image: "assets/articles/state-of-play-september-3-wide.jpg",
+      comments: 0,
+      tags: ["playstation", "state of play", "sony", "final fantasy"],
+      sourceLabel: "PlayStation.Blog",
+      sourceUrl: "https://blog.playstation.com/2026/08/31/state-of-play-state-of-play-japan-return-on-september-3/",
+      body: [
+        "Sony проведёт 3 сентября сразу две презентации State of Play подряд. Первая трансляция будет посвящена обновлениям от PlayStation Studios и сторонних партнёров.",
+        "Основной выпуск завершится расширенным показом Final Fantasy VII Revelation. Сразу после него начнётся State of Play Japan, где обещаны новые демонстрации, анонсы и подробности проектов от разработчиков из Японии и других стран Азии.",
+        "Обе трансляции стартуют в 15:00 по центральноевропейскому летнему времени. Основной выпуск будет идти на английском, а японский эфир получит английские субтитры.",
+        "Формат двух последовательных шоу выглядит как попытка PlayStation развести крупные глобальные анонсы и более локальные проекты, не уменьшая объём самого события."
+      ]
+    },
+    {
+      slug: "nintendo-switch-2-price-september-2026",
+      category: "industry",
+      published: true,
+      featured: false,
+      date: "2026-09-01",
+      dateLabel: "1 сентября 2026",
+      author: "NZR.GG Editorial",
+      title: "Nintendo Switch 2 подорожала в США до $499,99",
+      excerpt: "С 1 сентября Nintendo повысила рекомендованную цену Switch 2 в США с $449,99 до $499,99, сославшись на изменения рыночных условий.",
+      image: "assets/articles/nintendo-switch-2-price-september-wide.jpg",
+      comments: 0,
+      tags: ["nintendo", "switch 2", "цены", "индустрия"],
+      sourceLabel: "Nintendo",
+      sourceUrl: "https://www.nintendo.com/us/whatsnew/price-revision-for-nintendo-switch-2-system/",
+      body: [
+        "Nintendo of America с 1 сентября изменила рекомендованную цену Switch 2 в США: базовая система теперь стоит $499,99 вместо $449,99.",
+        "Компания объясняет решение изменениями рыночных условий, которые, по её оценке, будут влиять на бизнес в средне- и долгосрочной перспективе.",
+        "Цена оригинальной Nintendo Switch при этом не меняется. Для Латинской Америки Nintendo обещает сообщить обновлённые цены отдельно.",
+        "Повышение уже после выхода консоли важно не только для покупателей в США: оно показывает, насколько чувствительным остаётся железный бизнес к валютам, логистике и стоимости компонентов."
+      ]
+    },
+    {
+      slug: "gamescom-awards-2026-winners",
+      category: "industry",
+      published: true,
+      featured: false,
+      date: "2026-08-28",
+      dateLabel: "28 августа 2026",
+      author: "NZR.GG Editorial",
+      title: "The Witcher 3 и SEGA взяли по три награды gamescom 2026",
+      excerpt: "Организаторы gamescom назвали победителей 2026 года: по три награды получили CD PROJEKT RED и SEGA, по две — Capcom и Ubisoft.",
+      image: "assets/articles/gamescom-awards-2026-wide.jpg",
+      comments: 0,
+      tags: ["gamescom", "awards", "the witcher 3", "sega"],
+      sourceLabel: "gamescom",
+      sourceUrl: "https://www.gamescom.global/en/gamescom-award-2026-the-winners-are",
+      body: [
+        "Организаторы gamescom объявили победителей ежегодной премии. В 2026 году по три награды получили проекты и экспозиции CD PROJEKT RED и SEGA.",
+        "The Witcher 3: Wild Hunt отметили за трейлер и анонс Remastered вместе с Songs of the Past, за мерч и за лучший стенд по версии жюри.",
+        "SEGA получила награды за лучший звук Alien: Isolation 2, лучший PC-проект Total War: WARHAMMER 40,000 и лучшую общую линейку выставки.",
+        "Capcom взяла две награды с Onimusha: Way of the Sword, а Ubisoft — две с Rayman Legends Retold и бизнес-стендом. Отдельную HEART OF GAMING Award получила Games Done Quick."
+      ]
+    },
+    {
+      slug: "modern-warfare-4-open-beta-final-update",
+      category: "updates",
+      published: true,
+      featured: false,
+      date: "2026-08-31",
+      dateLabel: "31 августа 2026",
+      author: "NZR.GG Editorial",
+      title: "Modern Warfare 4 получила финальный апдейт открытой беты",
+      excerpt: "Infinity Ward завершает открытую бету Modern Warfare 4 обновлением с балансом оружия, правками Resurgence и дополнительными исправлениями.",
+      image: "assets/articles/mw4-open-beta-final-update-wide.jpg",
+      comments: 0,
+      tags: ["call of duty", "modern warfare 4", "beta", "update"],
+      sourceLabel: "Call of Duty",
+      sourceUrl: "https://www.callofduty.com/patchnotes/2026/08/call-of-duty-modern-warfare-4-beta-patch-notes",
+      body: [
+        "Infinity Ward выпустила обновление для последнего полного дня открытой беты Call of Duty: Modern Warfare 4.",
+        "В патч вошли очередная настройка оружия, изменения режима Resurgence и дополнительные исправления. Double XP и Double Weapon XP остаются активными до завершения теста.",
+        "В ротации продолжают работать Transit 213 24/7, 6v6 Gunfight на Kill Block и несколько вариантов Zodiac Resurgence.",
+        "Для разработчиков это финальный массив публичной обратной связи перед следующим этапом подготовки игры. Наиболее интересными после беты будут изменения баланса и сетевого поведения в релизной версии."
+      ]
+    },
+    {
+      slug: "playstation-plus-september-2026",
+      category: "news",
+      published: true,
+      featured: false,
+      date: "2026-08-26",
+      dateLabel: "26 августа 2026",
+      author: "NZR.GG Editorial",
+      title: "PlayStation Plus в сентябре даст четыре игры",
+      excerpt: "В сентябрьскую подборку PlayStation Plus вошли Sniper Elite: Resistance, MLB The Show 26, Wobbly Life и Chained Echoes.",
+      image: "assets/articles/ps-plus-september-2026-wide.jpg",
+      comments: 0,
+      tags: ["playstation plus", "ps5", "ps4", "sony"],
+      sourceLabel: "PlayStation.Blog",
+      sourceUrl: "https://blog.playstation.com/2026/08/26/playstation-plus-monthly-games-for-september-sniper-elite-resistance-mlb-the-show-26-wobbly-life-chained-echoes/",
+      body: [
+        "Sony раскрыла сентябрьскую подборку ежемесячных игр PlayStation Plus. В неё вошли сразу четыре проекта разных жанров.",
+        "Подписчики смогут забрать Sniper Elite: Resistance для PS5 и PS4, MLB The Show 26 для PS5, кооперативную Wobbly Life для PS5 и PS4 и классическую JRPG Chained Echoes для PS4.",
+        "Игры доступны с 1 сентября по 5 октября. Состав в отдельных регионах может отличаться.",
+        "Подборка выглядит заметно разнообразнее обычной тройки: здесь есть тактический экшен, спортивный симулятор, кооперативная песочница и сюжетная RPG."
+      ]
+    }
   ]
 };
 

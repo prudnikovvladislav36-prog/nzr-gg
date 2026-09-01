@@ -12,7 +12,7 @@
   function load(path, bustCache) {
     return new Promise((resolve, reject) => {
       const script = document.createElement("script");
-      script.src = src(path) + (bustCache ? `?fresh=${Date.now()}` : "?v=150");
+      script.src = src(path) + (bustCache ? `?fresh=${Date.now()}` : "?v=160");
       script.onload = resolve;
       script.onerror = () => reject(new Error(`Не удалось загрузить ${path}`));
       document.body.appendChild(script);

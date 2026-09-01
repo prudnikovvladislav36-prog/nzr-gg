@@ -836,3 +836,49 @@ body{overflow-x:hidden}
 /* Theme button has a visible selected state. */
 .theme-toggle{transition:background .18s ease,color .18s ease,border-color .18s ease}
 :root[data-theme="light"] .theme-toggle{background:#fff8e9!important;color:#a86d00!important;border-color:#c48a18!important}
+
+/* ===== NZR.GG v1.6 — CONTENT & POLISH ===== */
+/* Keep editorial artwork untouched: no category/title text is baked into image assets. */
+.hero-art-main,.story-art,.thumb,.media-card-image,.related-img,.article-cover{
+  image-rendering:auto!important;
+  filter:none!important;
+}
+
+/* Light mode keeps imagery cinematic while the surrounding UI becomes light. */
+:root[data-theme="light"] .hero-overlay{
+  background:linear-gradient(90deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.18) 36%,rgba(0,0,0,.80) 68%,rgba(0,0,0,.96) 100%),linear-gradient(0deg,rgba(0,0,0,.38),transparent 54%)!important;
+}
+:root[data-theme="light"] .hero-content h1{color:#fff!important;text-shadow:none!important}
+:root[data-theme="light"] .hero-content p{color:#d7d7d7!important}
+:root[data-theme="light"] .hero-content .eyebrow,:root[data-theme="light"] .hero-content .hero-note{color:#a9a9a9!important}
+:root[data-theme="light"] .hero-content .btn{color:#fff!important;background:rgba(0,0,0,.36)!important}
+:root[data-theme="light"] .hero-content .btn:hover{color:#090909!important;background:var(--gold)!important}
+:root[data-theme="light"] .story-shade{background:linear-gradient(0deg,rgba(0,0,0,.93),rgba(0,0,0,.04) 72%)!important}
+:root[data-theme="light"] .story-copy h3{color:#fff!important;text-shadow:0 2px 10px rgba(0,0,0,.55)!important}
+:root[data-theme="light"] .story-card{background:#111!important}
+:root[data-theme="light"] .news-card .thumb:after{background:linear-gradient(0deg,rgba(0,0,0,.42),transparent 52%)!important}
+
+/* Article actions are visually equal. */
+.article-share-row{display:grid!important;grid-template-columns:repeat(2,minmax(0,230px));gap:10px!important}
+.article-share-row .btn{width:100%;min-height:42px;margin:0!important;padding:12px 18px!important;white-space:nowrap}
+
+/* Cleaner related cards and category cards. */
+.related-card strong{line-height:1.24}
+.media-card-image,.news-card .thumb,.related-img,.story-art{aspect-ratio:16/9;background-position:center!important}
+.media-card-image{height:auto!important}
+.news-card{padding-top:0!important;display:flex;flex-direction:column}
+.news-card .thumb{position:relative!important;inset:auto!important;width:100%;height:auto!important;min-height:0!important;aspect-ratio:16/9}
+.news-card h3{padding:16px 16px 0;margin-bottom:10px}
+.news-card .meta{padding:0 16px 16px}
+
+/* The new images have no text, so use calmer crops on article pages. */
+.article-cover-frame{max-width:1280px;aspect-ratio:16/9;background:#0a0a0a}
+.article-cover{object-fit:cover!important;object-position:center!important}
+
+/* Footer no longer advertises speculative future products. */
+.site-footer p{max-width:560px}
+
+@media(max-width:680px){
+  .article-share-row{grid-template-columns:1fr!important}
+  .article-share-row .btn{white-space:normal}
+}
